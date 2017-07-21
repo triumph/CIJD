@@ -1,4 +1,4 @@
-FROM hub.linux100.cc/library/jenkins_slave_jnlp:2.62
+FROM hub.linux100.cc/library/oracle-java:8-alpine
 
 MAINTAINER triumph2008 <triumph2008@gmail.com>
 
@@ -9,9 +9,7 @@ RUN mkdir -p /services/module && \
     rm -rf  /tmp/apache-tomcat-8.0.45.tar.gz  && \
     mkdir -p /services/webapp
 
-ADD ./ /services/webapp
-
-RUN cd /services/webapp &&  cp /services/webapp/target/CIJD.war /services/module/tomcat/webapps
+ADD target/CIJD.war /services/module/tomcat/webapps/
 
 EXPOSE 8080
 
