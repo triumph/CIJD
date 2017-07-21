@@ -29,7 +29,7 @@ spec:
     spec:
       containers:
       - name: my-cijd
-        image: hub.linux100.cc/library/cijd:AAAAAABBBBBB
+        image: hub.linux100.cc/library/cijd:AAABBB
         ports:
         - containerPort: 8080
 
