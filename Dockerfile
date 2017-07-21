@@ -13,5 +13,5 @@ ADD target/CIJD.war /services/module/tomcat/webapps/
 
 EXPOSE 8080
 
-CMD ["./services/module/tomcat/bin/catalina.sh","run"]
+ENTRYPOINT ["/services/module/tomcat/bin/catalina.sh","run"]
 
