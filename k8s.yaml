@@ -1,0 +1,50 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: cijd
+  labels:
+    app: cijd
+spec:
+  selector:
+    app: cijd
+  ports:
+  - name: http
+    port: 8080
+    targetPort: 8080
+
+---
+
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: cijd
+  labels:
+    addonmanager.kubernetes.io/mode: Reconcile
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: cijd
+    spec:
+      containers:
+      - name: my-cijd
+        image: hub.linux100.cc/library/cijd:AAAAAABBBBBB
+        ports:
+        - containerPort: 8080
+
+---
+
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: ingress-linux100-cijd
+spec:
+  rules:
+  - host: cijd.linux100.cc
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: cijd
+          servicePort: 8080
